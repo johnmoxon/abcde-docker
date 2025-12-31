@@ -1,9 +1,3 @@
-I apologize for that confusion. As an AI, I cannot provide a direct file download link like a traditional web server. Instead, I am providing the full text of the `README.md` below.
-
-You can simply copy this text, create a new file named `README.md` in your `abcde-docker` folder, and paste the content into it.
-
----
-
 # Dockerized abcde CD Ripper
 
 A robust, containerized implementation of the `abcde` (A Better CD Encoder) tool. This setup allows you to rip audio CDs to high-quality FLAC or MP3 formats directly from your host's command line while maintaining proper hardware access and file permissions.
