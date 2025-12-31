@@ -41,14 +41,14 @@ alias rip='UID=$(id -u) GID=$(id -g) PWD=$(pwd) docker compose -f "${HOME}/abcde
 
 *After saving, reload your shell:* `source ~/.bashrc`
 
-### 3. Build the Image
+<!-- ### 3. Build the Image
 
 Build the local Docker image:
 
 ```bash
 docker compose build
 
-```
+``` -->
 
 ## Usage
 
