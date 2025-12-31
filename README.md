@@ -4,24 +4,19 @@ A robust, containerized implementation of the `abcde` (A Better CD Encoder) tool
 
 ## Features
 
-* 
-**Global Alias:** Run the `rip` command from any directory on your system.
+* **Global Alias:** Run the `rip` command from any directory on your system.
 
 
-* 
-**Local Output:** Ripped files are saved directly into your current working directory.
+* **Local Output:** Ripped files are saved directly into your current working directory.
 
 
-* 
-**Hardware Access:** Pre-configured to communicate with the host optical drive at `/dev/sr0`.
+* **Hardware Access:** Pre-configured to communicate with the host optical drive at `/dev/sr0`.
 
 
-* 
-**Metadata & Art:** Automatically fetches track names and album art using MusicBrainz and `glyrc`.
+* **Metadata & Art:** Automatically fetches track names and album art using MusicBrainz and `glyrc`.
 
 
-* 
-**Permission Safe:** Files are owned by your host user (UID 1000) rather than root.
+* **Permission Safe:** Files are owned by your host user (UID 1000) rather than root.
 
 
 
@@ -34,7 +29,6 @@ Clone this project into your home directory:
 ```bash
 git clone https://github.com/YOUR_USERNAME/abcde-docker.git ~/abcde-docker
 cd ~/abcde-docker
-
 ```
 
 ### 2. Set Up the Global Alias
@@ -43,7 +37,6 @@ Add the following line to your `~/.bashrc` (or `~/.zshrc` for Zsh users). This a
 
 ```bash
 alias rip='UID=$(id -u) GID=$(id -g) PWD=$(pwd) docker compose -f "${HOME}/abcde-docker/docker-compose.yml" --project-directory "${HOME}/abcde-docker" run --rm abcde'
-
 ```
 
 *After saving, reload your shell:* `source ~/.bashrc`
@@ -73,21 +66,11 @@ rip
 The `abcde.conf` file is mapped from the project directory. You can modify it to change encoding bitrates, naming conventions, or output formats:
 
 * **Location:** `~/abcde-docker/abcde.conf`
-* 
-**Default Format:** `${ARTISTFILE}/${ALBUMFILE}/${TRACKNUM}.${TRACKFILE}` 
-
-
-* 
-**Default Codec:** FLAC 
-
-
+* **Default Format:** `${ARTISTFILE}/${ALBUMFILE}/${TRACKNUM}.${TRACKFILE}` 
+* **Default Codec:** FLAC 
 
 ## Troubleshooting
 
-* 
-**User Identity:** The setup maps `/etc/passwd` to ensure the container recognizes your username.
-
-
-* 
-**Hardware Permission:** If the drive isn't detected, ensure your user is in the `cdrom` group: `sudo usermod -aG cdrom $USER`.
+* **User Identity:** The setup maps `/etc/passwd` to ensure the container recognizes your username.
+* **Hardware Permission:** If the drive isn't detected, ensure your user is in the `cdrom` group: `sudo usermod -aG cdrom $USER`.
 
