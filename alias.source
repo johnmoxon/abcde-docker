@@ -1,0 +1,2 @@
+# Alias allows user to run the rip command from any directory and output the resultant files into the current working directory
+alias rip='UID=$(id -u) GID=$(id -g) PWD=$(pwd) docker compose -f "${HOME}/abcde-docker/docker-compose.yml" --project-directory "${HOME}/abcde-docker" run --rm abcde'

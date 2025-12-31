@@ -1,0 +1,28 @@
+services:
+  abcde:
+    build: .
+    container_name: abcde-ripper
+    image: ghcr.io/johnmoxon/abcde-ripper:latest
+    devices:
+      - /dev/sr0:/dev/sr0  # Maps host CD drive to container
+    group_add:
+      - cdrom # Tells the container to use the host's cdrom group permissions
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - ./abcde.conf:/etc/abcde.conf:ro
+
+      # Maps the present working directory as the output dir
+      - ${PWD}:/data
+      
+    # Use the host's UID/GID to prevent permission issues with ripped files
+    user: "${UID}:${GID}"
+
+    # Required for some drive controls
+    privileged: true
+    environment:
+      - HOME=/data  # Forces abcde to use the mapped output folder for temp files
+      - MUSICBRAINZ_SERVER=https://musicbrainz.org
+      # If you had a specific API key for a service like Discogs (via plugins):
+      # - DISCOGS_API_TOKEN=${DISCOGS_TOKEN}
+    working_dir: /data
